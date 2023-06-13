@@ -5,10 +5,7 @@ node {
      * maps the port (`3306`) to a known port on the host machine.
      */
     docker.image('node:16-buster-slim').withRun('-p 3000:3000') { 
-        sh 'npm install' 
-    }
-    stage('Build') { 
-        sh 'npm install' 
+        npm install 
     }
 }
 
