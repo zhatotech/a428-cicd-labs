@@ -1,9 +1,7 @@
 node {
     checkout scm
     docker.image('node:16-buster-slim').withRun('-p 3000:3000')  {
-        docker.inside {
-            sh 'npm install'
-        }
+        sh 'npm install'
     }
 }
 
