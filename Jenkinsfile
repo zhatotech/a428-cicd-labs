@@ -1,13 +1,9 @@
 node {
     checkout scm
-    /*
-     * In order to communicate with the MySQL server, this Pipeline explicitly
-     * maps the port (`3306`) to a known port on the host machine.
-     */
-    def tesdicoding = docker.image('node:16-buster-slim').withRun('-p 3000:3000') 
-    
-    tesdicoding.inside {
-        sh 'npm install'
+    docker.image('node:16-buster-slim').withRun('-p 3000:3000')  {
+        docker.inside {
+            sh 'npm install'
+        }
     }
 }
 
